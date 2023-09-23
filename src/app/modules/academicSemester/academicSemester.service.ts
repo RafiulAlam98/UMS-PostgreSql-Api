@@ -69,7 +69,17 @@ const getAllSemester = async (filters:IAcademicSemesterFilterRequest,options:IPa
     }
 }
 
+
+const getDataById = async  (id:string):Promise<AcademicSemester | null>=>{
+    const result = await prisma.academicSemester.findUnique({
+        where:{
+            id
+        }
+    })
+    return result
+}
 export const AcademicSemesterService ={
     insertIntoDb,
-    getAllSemester
+    getAllSemester,
+    getDataById
 }

@@ -6,6 +6,7 @@ import validateRequest from "../../middlewares/validateRequest";
 const router = express.Router()
 
 router.post("/create-semester", validateRequest(AcademicSemesterValidation.create), AcademicSemeeterController.insertIntoDb)
+router.get("/:id",AcademicSemeeterController.getDataById)
 router.get("/", AcademicSemeeterController.getAllFromDb)
 
 
