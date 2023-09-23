@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\projects\\phero-2.0\\project\\university-management-prisma\\logs\\winston\\successes\\.44ba333a3e6eefafdeadc536141346e308287f9a-audit.json",
+    "files": [
+        {
+            "date": 1695479846174,
+            "name": "D:\\projects\\phero-2.0\\project\\university-management-prisma\\logs\\winston\\successes\\phu-2023-23-09-20-success.log",
+            "hash": "b5222c8e6485a3c6a58687070e920b56ebe4f80230f692817c1edde3c1643b2d"
+        },
+        {
+            "date": 1695481203551,
+            "name": "D:\\projects\\phero-2.0\\project\\university-management-prisma\\logs\\winston\\successes\\phu-2023-23-09-21-success.log",
+            "hash": "2c2f337c7c7cd30ee87f6c3ef994f692606ae27b8a2fd0f27123c43ff2ab6444"
+        }
+    ],
+    "hashType": "sha256"
+}
