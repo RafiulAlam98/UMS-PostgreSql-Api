@@ -14,8 +14,11 @@ const insertIntoDb = async (data:Building):Promise<Building>=>{
     return result
 }
 
-const getAllFromDb = async (filters:IBuildingFilterRequest,options:IPaginationOptions):Promise<IGenericResponse<Building[]>>=>{
-    const {page,limit, skip} = paginationHelpers.calculatePagination(options)
+const getAllFromDb = async (filters:IBuildingFilterRequest,
+                            options:IPaginationOptions)
+                            :Promise<IGenericResponse<Building[]>> =>{
+    const {page,limit, skip} =
+        paginationHelpers.calculatePagination(options)
     const {searchTerm} = filters
     const andConditions = []
 
@@ -29,7 +32,8 @@ const getAllFromDb = async (filters:IBuildingFilterRequest,options:IPaginationOp
             }))
         })
     }
-    const whereConditions: Prisma.BuildingWhereInput = andConditions.length > 0 ? {AND:andConditions}:{}
+    const whereConditions: Prisma.BuildingWhereInput =
+        andConditions.length > 0 ? {AND:andConditions}:{}
     const result = await prisma.building.findMany({
         skip,
         take:limit,
