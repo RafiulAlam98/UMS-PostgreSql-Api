@@ -39,6 +39,11 @@
             "date": 1695568477801,
             "name": "D:\\projects\\phero-2.0\\project\\university-management-prisma\\logs\\winston\\successes\\phu-2023-24-09-21-success.log",
             "hash": "9ac493beb83af8936d5cc9b99c7b01bf0b3ca7ac46fd836841d5d4a1381042f7"
+        },
+        {
+            "date": 1695571276349,
+            "name": "D:\\projects\\phero-2.0\\project\\university-management-prisma\\logs\\winston\\successes\\phu-2023-24-09-22-success.log",
+            "hash": "933dd2b45cacc774061b041560f4be20b506700381a99ae79d14e3bebd07c6a2"
         }
     ],
     "hashType": "sha256"

@@ -7,6 +7,7 @@ import {IStudentFilterRequest} from "./student.interface";
 import {studentSearchableFields} from "./student.constant";
 
 const insertIntoDB = async (data: Student): Promise<Student> => {
+    console.log(data)
     const result = await prisma.student.create({
         data,
         include: {

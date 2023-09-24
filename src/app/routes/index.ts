@@ -4,6 +4,7 @@ import {AcademicFacultyRoutes} from "../modules/academicFaculty/academicFaculty.
 import {AcademicDepartmentRoutes} from "../modules/acdemicDepartment/acdemicDepartment.routes";
 import {FacultyRoutes} from "../modules/faculty/faculty.routes";
 import {StudentRoutes} from "../modules/student/student.routes";
+import {BuildingRoutes} from "../modules/building/building.routes";
 
 const router = express.Router();
 
@@ -28,6 +29,10 @@ const moduleRoutes = [
   {
     path: "/student",
     route: StudentRoutes.router
+  },
+  {
+    path: "/building",
+    route: BuildingRoutes.router
   },
 ];
 
