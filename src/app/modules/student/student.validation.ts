@@ -23,7 +23,7 @@ const create = z.object({
         contactNo: z.string({
             required_error: 'Contact no is required'
         }),
-        gender: z.string({
+        geneder: z.string({
             required_error: 'Gender is required'
         }),
         bloodGroup: z.string({
@@ -50,7 +50,7 @@ const update = z.object({
         profileImage: z.string().optional(),
         email: z.string().optional(),
         contactNo: z.string().optional(),
-        gender: z.string().optional(),
+        geneder: z.string().optional(),
         bloodGroup: z.string().optional(),
         academicSemesterId: z.string().optional(),
         academicDepartmentId: z.string().optional(),
