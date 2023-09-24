@@ -36,8 +36,8 @@ model AcademicFaculty {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  academicDepartments AcademicDepartment[]
 
+  academicDepartments AcademicDepartment[]
   students Student[]
   faculties Facuclty[]
   
@@ -50,8 +50,10 @@ model AcademicDepartment{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+
   academicFaculty AcademicFaculty @relation(fields: [academicFacultyId], references: [id])
   academicFacultyId String 
+
 
   students Student[]
   faculties Facuclty[]
@@ -95,7 +97,7 @@ model Facuclty {
   profileImage String
   email String
   contactNo String
-  geneder String
+  gender String
   bloodGroup String
   designation String
   createdAt DateTime @default(now())
