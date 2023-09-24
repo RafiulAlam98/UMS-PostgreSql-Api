@@ -8,6 +8,7 @@ const router = express.Router()
 
 router.post("/create-student", validateRequest(StudentValidation.create), StudnetController.insertIntoDB)
 router.get("/:id", StudnetController.getByIdFromDB)
+router.patch("/:id",validateRequest(StudentValidation.update), StudnetController.updateIntoDb)
 router.get("/", StudnetController.getAllFromDB)
 
 export const StudentRoutes = {router}
