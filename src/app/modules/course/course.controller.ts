@@ -14,6 +14,20 @@ const insertIntoDb = catchAsync(async (req:Request,res:Response)=>{
     })
 })
 
+const updateOneInDb = catchAsync(async (req:Request,res:Response)=>{
+    const {id}= req.params
+    const data = req.body
+    const result = await CourseService.updateOneDb(id, data)
+    sendResponse(res,{
+        statusCode:httpStatus.OK,
+        success:true,
+        message:"Course Updated Successfully!",
+        data:result
+    })
+})
+
+
 export const CourseController = {
-    insertIntoDb
+    insertIntoDb,
+    updateOneInDb
 }
