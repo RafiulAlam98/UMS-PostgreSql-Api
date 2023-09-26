@@ -5,7 +5,9 @@ import {FacultyController} from "./faculty.controller";
 
 const router = express.Router()
 
-router.post("/create-faculty", validateRequest(FacultyValidation.create), FacultyController.insertIntoDB)
+router.post("/create-faculty",
+    validateRequest(FacultyValidation.create),
+    FacultyController.insertIntoDB)
 router.get("/:id", FacultyController.getByIdFromDB)
 router.get("/", FacultyController.getAllFromDB)
 
