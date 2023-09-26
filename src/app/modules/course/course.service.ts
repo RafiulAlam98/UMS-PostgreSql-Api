@@ -1,14 +1,15 @@
 import ApiError from "../../../errors/ApiError";
 import httpStatus from "http-status";
-import {ICourseCreateData, IPrerequisiteCourseRequest} from "./course.interface";
+import { IPrerequisiteCourseRequest} from "./course.interface";
 import prisma from "../../../shared/prisma";
-import {Course} from "@prisma/client";
+import {Course, CourseFaculty} from "@prisma/client";
 import {asyncForEach} from "../../../shared/utils";
 
 
 
 
-const insertIntoDb = async (payload:any):Promise<any> =>{
+const insertIntoDb = async (
+    payload:any):Promise<any> =>{
     const {preRequisiteCourses,...courseData} = payload
 
     const newCourse = await prisma.$transaction(async (transactionClient)=>{
@@ -60,7 +61,9 @@ if(newCourse){
 }
 
 
-const updateOneDb = async (id:string, payload:Partial<any>):Promise<Course | null > =>{
+const updateOneDb = async (
+    id:string,
+    payload:Partial<any>):Promise<Course | null > =>{
     const {preRequisiteCourses,...courseData} = payload
 
     await prisma.$transaction(async (transactionClient )=>{
@@ -132,7 +135,31 @@ const updateOneDb = async (id:string, payload:Partial<any>):Promise<Course | nul
 
 }
 
+const assignFaculties = async (
+    id:string,
+    payload:string[]
+):Promise<CourseFaculty[]>=>{
+    await prisma.courseFaculty.createMany({
+        data: payload.map((facultyId)=>({
+            courseId:id,
+            facultyId
+        }))
+    })
+
+    const assignFaculties = await prisma.courseFaculty.findMany({
+        where:{
+            courseId:id
+        },
+        include:{
+            faculty:true
+        }
+    })
+    return assignFaculties
+}
+
+
 export const CourseService = {
     insertIntoDb,
-    updateOneDb
+    updateOneDb,
+    assignFaculties
 }

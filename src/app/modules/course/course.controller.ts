@@ -26,8 +26,23 @@ const updateOneInDb = catchAsync(async (req:Request,res:Response)=>{
     })
 })
 
+const assignFaculties = catchAsync(async (req:Request,res:Response)=>{
+    const {id}= req.params
+    const data = req.body.faculties
+    console.log(id, data)
+    const result = await CourseService.assignFaculties(id, data)
+    sendResponse(res,{
+        statusCode:httpStatus.OK,
+        success:true,
+        message:"Course Faculty Assigned Successfully!",
+        data:result
+    })
+})
+
+
 
 export const CourseController = {
     insertIntoDb,
-    updateOneInDb
+    updateOneInDb,
+    assignFaculties
 }
