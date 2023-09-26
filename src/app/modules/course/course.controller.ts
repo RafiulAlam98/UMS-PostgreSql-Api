@@ -39,10 +39,25 @@ const assignFaculties = catchAsync(async (req:Request,res:Response)=>{
     })
 })
 
+const removeFaculties = catchAsync(async (req:Request,res:Response)=>{
+    const {id}= req.params
+    const data = req.body.faculties
+    console.log(id, data)
+    const result = await CourseService.removeFaculties(id, data)
+    sendResponse(res,{
+        statusCode:httpStatus.OK,
+        success:true,
+        message:"Course Faculty Removed Successfully!",
+        data:result
+    })
+})
+
+
 
 
 export const CourseController = {
     insertIntoDb,
     updateOneInDb,
-    assignFaculties
+    assignFaculties,
+    removeFaculties
 }
