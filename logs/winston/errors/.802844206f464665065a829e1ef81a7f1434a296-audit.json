@@ -64,6 +64,11 @@
             "date": 1695780608365,
             "name": "D:\\projects\\phero-2.0\\project\\university-management-prisma\\logs\\winston\\errors\\phu-2023-27-09-08-error.log",
             "hash": "0e788e40b338b29c30434359d3c4f28ae3956e2b3f0ea64d532a458b158b5d83"
+        },
+        {
+            "date": 1695785150471,
+            "name": "D:\\projects\\phero-2.0\\project\\university-management-prisma\\logs\\winston\\errors\\phu-2023-27-09-09-error.log",
+            "hash": "d8dc8d08031e9053ba2d08a13e1dfcd672b6d784889f52ef6b2b1dae8ac5fb9a"
         }
     ],
     "hashType": "sha256"
