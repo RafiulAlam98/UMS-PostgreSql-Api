@@ -7,11 +7,11 @@ import ApiError from '../../errors/ApiError';
 import handleValidationError from '../../errors/handleValidationError';
 
 import { ZodError } from 'zod';
-import handleCastError from '../../errors/handleCastError';
 import handleZodError from '../../errors/handleZodError';
 import { IGenericErrorMessage } from '../../interfaces/error';
 import { errorlogger } from '../../shared/logger';
 import {Prisma} from "@prisma/client";
+import handleClientError from "../../errors/handleCastError";
 
 const globalErrorHandler: ErrorRequestHandler = (
   error,
@@ -38,7 +38,7 @@ const globalErrorHandler: ErrorRequestHandler = (
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
   } else if (error?.name === 'CastError') {
-    const simplifiedError = handleCastError(error);
+    const simplifiedError = handleClientError(error);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
