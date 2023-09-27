@@ -15,6 +15,21 @@ const insertIntoDb = catchAsync(async(req:Request, res:Response)=>{
 
 })
 
+
+const updateOneDb = catchAsync(async(req:Request, res:Response)=>{
+    const id = req.params.id
+    const result = await
+        SemesterRegistrationService.updateOneDb(id,req.body)
+    sendResponse(res,{
+        statusCode:httpStatus.OK,
+        success:true,
+        message:"Semester Updated Successfully!",
+        data:result
+    })
+
+})
+
 export const SemesterRegistrationController ={
-    insertIntoDb
+    insertIntoDb,
+    updateOneDb
 }

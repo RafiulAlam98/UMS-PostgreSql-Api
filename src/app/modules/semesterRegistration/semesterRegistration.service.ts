@@ -28,6 +28,24 @@ const insertIntoDb = async (data:SemesterRegistration):Promise<SemesterRegistrat
     return result
 }
 
+
+
+const updateOneDb = async (
+    id:string,
+    payload:Partial<SemesterRegistration>):Promise<SemesterRegistration> => {
+
+    const result = await prisma.semesterRegistration.update({
+        where:{
+            id,
+        },data:payload,
+        include:{
+            academicSemester:true
+        }
+    })
+    return result
+}
+
 export const SemesterRegistrationService = {
-    insertIntoDb
+    insertIntoDb,
+    updateOneDb
 }
