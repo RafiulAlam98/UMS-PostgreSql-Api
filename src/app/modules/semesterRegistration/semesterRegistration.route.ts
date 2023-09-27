@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post("/create-registration",
     SemesterRegistrationController.insertIntoDb)
-router.put("/:id",
+router.patch("/:id",
     SemesterRegistrationController.updateOneDb)
 
 export const SemesterRegistrationRoutes ={

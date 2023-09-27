@@ -34,6 +34,28 @@ const updateOneDb = async (
     id:string,
     payload:Partial<SemesterRegistration>):Promise<SemesterRegistration> => {
 
+    const isExists = await prisma.semesterRegistration.findUnique({
+        where:{
+            id
+        }
+    })
+
+    if(!isExists){
+        throw new ApiError(httpStatus.BAD_REQUEST, "Data Not Found")
+    }
+
+    if(isExists.status &&
+        isExists.status === SemesterRegistrationStatus.UPCOMING &&
+        payload.status !== SemesterRegistrationStatus.ONGOING){
+        throw new ApiError(httpStatus.BAD_REQUEST, "Can Only Update Upcoming to Ongoing")
+    }
+
+    if(isExists.status &&
+        isExists.status === SemesterRegistrationStatus.ONGOING &&
+        payload.status !== SemesterRegistrationStatus.ENDED){
+        throw new ApiError(httpStatus.BAD_REQUEST, "Can Only Update Ongoing to Ended")
+    }
+
     const result = await prisma.semesterRegistration.update({
         where:{
             id,
