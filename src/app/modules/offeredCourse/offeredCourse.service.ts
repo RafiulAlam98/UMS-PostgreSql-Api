@@ -6,19 +6,40 @@ import prisma from "../../../shared/prisma";
 const insertIntoDb = async (data:ICreateOfferdCourse):Promise<OfferedCourse[]> =>{
     const {academicDepartmentId, semesterRegistrationId, courseIds} = data
 
-    const result:any = []
+    let result:any = []
+    
+        await asyncForEach(courseIds, async (courseId:string)=>{
 
-    await asyncForEach(courseIds, async (courseId:string)=>{
-        const insertOfferedCourse = await prisma.offeredCourse.create({
-            data:{
-                academicDepartmentId,
-                semesterRegistrationId,
-                courseId
+            const alreadyExists =
+                await prisma.offeredCourse.findFirst({
+                where:{
+                    academicDepartmentId,
+                    semesterRegistrationId,
+                    courseId
+                }
+            })
+
+            if(!alreadyExists){
+                const insertOfferedCourse =
+                    await prisma.offeredCourse.create({
+                    data:{
+                        academicDepartmentId,
+                        semesterRegistrationId,
+                        courseId
+                    },
+                    include:{
+                        academicDepartment:true,
+                        semesterRegistration:true,
+                        course:true
+                    }
+
+                })
+                result.push(insertOfferedCourse)
             }
 
         })
-    result.push(insertOfferedCourse)
-    })
+
+
     return result
 
 }
